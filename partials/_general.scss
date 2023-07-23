@@ -1,0 +1,74 @@
+body {
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.5;
+    color: $dark-color;
+    transition: all 500ms ease;
+}
+.container {
+    width: $container-lg;
+    margin: 0 auto;
+    transition: all 500ms ease;
+}
+body.light {
+    background: rgba($primary-color-variable, 0.1);
+}
+body.dark {
+    background: $black-color;
+}
+.container.dark, section.dark {
+    color: $white-color;
+    h2, h2, h3, h4, h5, a, p {
+        color: $white-color;
+    }
+}
+html {
+    scroll-behavior: smooth;
+}
+img {
+    display: block;
+    width: 100%;
+}
+h1, h2, h3, h4, h5 {
+    line-height: 1.2;
+}
+section {
+    margin-top: 6rem;
+    transition: all 500ms ease;
+    & > h2 {
+        text-align: center;
+    }
+    & > p {
+        text-align: center;
+        width: 42%;
+        margin: 0.6rem auto 2.5rem;
+    }
+}
+.btn {
+   @include button; 
+}
+.btn-primary {
+    @include button($white-color, $primary-color);
+}
+
+// MEDIA QUERIES (MEDIUM)
+
+@media screen and (max-width: 1024px) {
+    .container {
+        width: $container-md;
+    }
+    section {
+        & > p {
+            width: 55%;
+        }
+    }
+}
+
+// MEDIA QUERIES (SMALL)
+
+@media screen and (max-width: 600px) {
+    section {
+        & > p {
+            width: $container-md;
+        }
+    }
+}

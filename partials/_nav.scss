@@ -1,0 +1,150 @@
+@keyframes flipNavItem {
+    0% {
+        transform: rotateX(90deg);
+    }
+    100% {
+        transform: rotateX(0deg);
+        opacity: 1;
+    }
+}
+nav {
+    width: 100vw;
+    height: 5rem;
+    position: fixed;
+    z-index: 10;
+    @include gradientBg;
+    display: grid;
+    place-items: center;
+    box-shadow: 0 1rem 1rem rgba($black-color, 0.1);
+    transition: all 500ms ease;
+    &.onScroll, &.onScroll.light {
+        background: $white-color;
+        transition: all 500ms ease;
+        .container {
+            a:not(.btn) {
+                color: $black-color;
+            }
+            .dark-light-mode {
+                color: $black-color;
+                .toggler {
+                    border-color: $black-color;
+                    #ball {
+                        background: $black-color;
+                    }
+                }
+            }
+        }
+    } &.onScroll.dark {
+        border-bottom: 1px solid $light-color;
+        background: $black-color;
+        .container {
+            a:not(.btn) {
+                color: $white-color;
+            }
+            .dark-light-mode {
+                color: $white-color;
+                .toggler {
+                    border-color: $white-color;
+                    #ball {
+                        background: $white-color;
+                    }
+                }
+            }
+        }
+    }
+    .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        &.dark {
+            .dark-light-mode {
+                .toggler {
+                    #ball {
+                        margin-left: calc(100% - 0.7rem);
+                    }
+                }
+            }
+        }
+        .dark-light-mode {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            cursor: pointer;
+            .toggler {
+                display: flex;
+                align-items: center;
+                border: $white-color solid 1px;
+                width: 3rem;
+                height: 1rem;
+                border-radius: 1rem;
+                padding: 1px;
+                #ball {
+                    transition: all 500ms ease;
+                    width: .7rem;
+                    height: .7rem;
+                    border-radius: 50%;
+                    display: flex;
+                    background: $white-color;
+                }
+            }
+        }
+        ul {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+        }
+        button {
+            display: none;
+        }
+        a {
+            color: $white-color;
+            font-weight: 400;
+            font-size: 0.9rem;
+        }
+    }
+}
+
+// MEDIA QUERIES (MEDIUM)
+
+@media screen and (max-width: 1024px) {
+    nav {
+        .container {
+            button {
+                display: inline-block;
+                background: transparent;
+                color: $white-color;
+                font-size: 2rem;
+                cursor: pointer;
+                &#close__nav-btn {
+                    display: none;
+                }
+            }
+            ul {
+                position: fixed;
+                right: 5%;
+                top: 5rem;
+                flex-direction: column;
+                gap: 0;
+                align-items: flex-start;
+                display: none;
+                li {
+                    width: 100%;
+                    opacity: 0;
+                    animation: flipNavItem 300ms ease forwards;
+                    transform-origin: top;
+                    a {
+                        color: $white-color;
+                        height: 100%;
+                        display: block;
+                        padding: 1.5rem 2rem;
+                        border-radius: 0;
+                        background: linear-gradient($primary-color-variable, darken($primary-color-variable, 10%));
+                        &.btn {
+                            background: $secondary-color;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

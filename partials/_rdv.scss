@@ -1,0 +1,76 @@
+#rdv {
+    .container {
+        display: grid;
+        grid-template-columns: 47% 47%;
+        gap: 6%;
+        .infos {
+            p {
+                margin: 0.5rem 0 2rem;
+            }
+            article {
+                display: flex;
+                gap: 1.5rem;
+                margin-bottom: 1.5rem;
+                small {
+                    margin-top: .4rem;
+                    display: block;
+                }
+                .infos__icon {
+                    background: $secondary-color;
+                    padding: .8rem;
+                    height: fit-content;
+                    border-radius: 50%;
+                    color: $white-color;
+                    display: flex;
+                    font-size: 1.4rem;
+                }
+            }
+        }
+        &.dark form .form__groupe input,
+        &.dark form .form__groupe select,
+        &.dark form .form__groupe textarea {
+            background: transparent;
+            color: $white-color;
+        }
+        &.dark input[type="date"]::-webkit-calendar-picker-indicator {
+            filter: invert(100%);
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.4rem;
+        }
+        .form__groupe {
+            label {
+                font-size: .85rem;
+            margin-bottom: .4rem;
+            display: inline-block;
+            font-weight: 600;
+            }
+            input, textarea, select {
+                background: $white-color;
+                padding: .85rem 1rem;
+                display: block;
+                width: 100%;
+                border-radius: .4rem;
+                resize: none;
+                appearance: none;
+                border: 1px $secondary-color solid;
+            }
+        }
+    }
+}
+
+// MEDIA QUERIES (MEDIUM)
+
+@media screen and (max-width: 1024px) {
+    #rdv {
+        .container {
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            .infos {
+                text-align: center;
+            }
+        }
+    }
+}
